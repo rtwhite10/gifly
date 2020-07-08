@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import theme from './components/ui/theme'
+import { ThemeProvider } from '@material-ui/core'
+
+
 
 function App() {
   return (
-    <div className="App">
-    
-    </div>
+    <ThemeProvider theme={theme}>
+
+    </ThemeProvider>
   );
 }
 
