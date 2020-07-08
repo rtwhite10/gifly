@@ -4,7 +4,8 @@ export function apiQuery(search) {
   fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${search}&limit=25&offset=0&rating=g&lang=en`)
     .then(res => res.json())
     .then(json => {
-      return json
+      console.log(json.data)
+      return json.data
     })
     .catch(err => console.log(err)) 
 }
