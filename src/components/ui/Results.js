@@ -1,4 +1,5 @@
 import React from 'react'
+import Gif from './Gif'
 import {Button, Container, TextField} from '@material-ui/core'
 import {apiQuery} from '../api/ApiRequest'
 import { makeStyles } from '@material-ui/core'
@@ -28,19 +29,20 @@ export default function Results() {
   const classes = useStyles()
 
   React.useEffect(() => {
-    setResults()
+    apiQuery(search, setResults)
     console.log(results)
   },[setSearch])
-  const handleData = () => {
-    setResults(apiQuery(search))
-    console.log(results)
+
+  const handleSubmit = () => {
+    
+   
   }
 
   return (
     <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setSearch(e.target.value)} />
-        <Button variant="contained" color="secondary" onClick={() => handleData()}>🔍</Button>
+        <Button variant="contained" color="secondary" onClick={() => handleSubmit()}>🔍</Button>
       </form>
       
         
@@ -48,7 +50,7 @@ export default function Results() {
         {loading ? 
           <ReactLoading color="primary" height={667} width={375} /> :
           results.map(gif => (
-            <img src={gif.url} />
+            <Gif key={gif.id} result={gif} />
           ))
         }
         </div>
