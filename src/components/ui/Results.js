@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     height: '100vh',
     margin: 'auto',
     display: 'flex',
-    flexwrap: 'wrap'
+    flexWrap: 'wrap'
   },
   loader: {
     margin: 'auto'
@@ -30,25 +30,26 @@ const useStyles = makeStyles({
 export default function Results() {
   const [text, setText] = React.useState("")
   const [search, setSearch] = React.useState('cats')
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(false)
   const [results, setResults] = React.useState([])
   const classes = useStyles()
 
   React.useEffect(() => {
-    apiQuery(search, setResults)
+    setLoading(true)
+    apiQuery(search, setResults, setLoading)
     console.log(results)
   },[setSearch])
 
   const handleSubmit = () => {
-    setSearch()
-   
+    setSearch(text)
+    setLoading(false)
   }
 
   return (
     <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
-        <Button variant="contained" color="secondary" onClick={() => handleSubmit()}>🔍</Button>
+        <Button disableElevation variant="contained" color="secondary" onClick={() => handleSubmit()}>🔍</Button>
       </form>
       <div className={classes.resultsContainer}>
       {loading ? 

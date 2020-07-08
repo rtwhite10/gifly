@@ -4,8 +4,6 @@ import Results from './components/ui/Results'
 import Header from './components/ui/Header'
 import { ThemeProvider } from '@material-ui/core'
 
-
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
