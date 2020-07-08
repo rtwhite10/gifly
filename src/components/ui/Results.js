@@ -18,11 +18,17 @@ const useStyles = makeStyles({
   resultsContainer: {
     width: '70%',
     height: '100vh',
+    margin: 'auto',
+    display: 'flex',
+    flexwrap: 'wrap'
+  },
+  loader: {
     margin: 'auto'
   }
 })
 
 export default function Results() {
+  const [text, setText] = React.useState("")
   const [search, setSearch] = React.useState('cats')
   const [loading, setLoading] = React.useState(true)
   const [results, setResults] = React.useState([])
@@ -34,28 +40,24 @@ export default function Results() {
   },[setSearch])
 
   const handleSubmit = () => {
-    
+    setSearch()
    
   }
 
   return (
     <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
-        <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setSearch(e.target.value)} />
+        <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
         <Button variant="contained" color="secondary" onClick={() => handleSubmit()}>🔍</Button>
       </form>
-      
-        
-        <div className={classes.resultsContainer}>
-        {loading ? 
-          <ReactLoading color="primary" height={667} width={375} /> :
-          results.map(gif => (
-            <Gif key={gif.id} result={gif} />
-          ))
-        }
-        </div>
-      
-      
+      <div className={classes.resultsContainer}>
+      {loading ? 
+          <ReactLoading className={classes.loader} color="#FFBA60" height={667} width={375} /> :
+        results.map(gif => (
+          <Gif key={gif.id} result={gif} />
+        ))
+      }
+      </div>
     </React.Fragment>
   )
 }
