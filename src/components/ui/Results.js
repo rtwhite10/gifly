@@ -42,8 +42,9 @@ export default function Results() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const results = await apiQuery(text)
-    dispatch(recieveApiData(results))
+    // const results = await apiQuery(text)
+    // dispatch(recieveApiData(results))
+    dispatch(requestApiData(text))
   }
 
   return (

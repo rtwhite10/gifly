@@ -11,7 +11,7 @@ export function giphyApp(state = initialState, action) {
     case 'RESULTS_FETCH_SUCCEEDED': 
       return {
         ...state,
-        results: action.data,
+        results: action.results,
         loading: false
       }
     case 'RESULTS_FETCH_FAILED': 
