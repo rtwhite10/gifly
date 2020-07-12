@@ -5,6 +5,9 @@ import {apiQuery} from '../api/ApiRequest'
 import { makeStyles } from '@material-ui/core'
 import ReactLoading from 'react-loading';
 
+// convert to redux for state changes
+// use saga to handle async state updates
+// look up best practices and most current practices 
 
 const useStyles = makeStyles({
   formField: {

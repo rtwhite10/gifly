@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     imageContainer: {
-        maxWidth: "250px",
-        maxHeight: "250px"
+        Width: "250px",
+        Height: "250px"
     }
 }));
 
@@ -12,10 +12,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Gif({ result }) {
     const classes = useStyles()
     const { id, images, title } = result
-    const { downsized } = images
+    const { fixed_height } = images
     return (
-        <div className={classes.imageContainer} key={id}>
-            <img src={downsized.url} alt={title} />
+        <div key={id}>
+            <img className={classes.imageContainer} src={fixed_height.url} alt={title} />
         </div>
     )
 }

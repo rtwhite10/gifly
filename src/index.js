@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleWare from 'redux-saga'
+
+import { giphyApp } from '../src/components/redux/reducers'
+import mySaga from '../src/components/redux/saga'
+
+const sagaMiddleware = createSagaMiddleWare()
+
+const store = createStore(
+  giphyApp,
+  applyMiddleware(sagaMiddleware)
+)
+
+sagaMiddleware.run(mySaga)
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
