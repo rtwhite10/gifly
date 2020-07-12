@@ -1,14 +1,16 @@
 const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED'
+const RESULTS_FETCH_SUCCEEDED = 'RESULTS_FETCH_SUCCEEDED'
 
-export function requestDataSearch(search) {
-
-  function generateId() {
-    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString();
-  }
-
+export function requestApiData(search) {
   return {
     type: USER_FETCH_REQUESTED,
     search,
-    id: generateId()
+  }
+}
+
+export function recieveApiData(data) {
+  return {
+    type: RESULTS_FETCH_SUCCEEDED,
+    data
   }
 }

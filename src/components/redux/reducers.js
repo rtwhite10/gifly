@@ -1,25 +1,26 @@
 
 const initialState = {
-  loading: null,
+
   message: '',
-  results: []
+  results: [],
+  loading: null
 }
 
 export function giphyApp(state = initialState, action) {
   switch(action.type) {
     case 'RESULTS_FETCH_SUCCEEDED': 
       return {
-        loading: false,
-        results: action.results
+        ...state,
+        results: action.data,
+        loading: false
       }
     case 'RESULTS_FETCH_FAILED': 
       return {
         ...state,
-        loading: false,
-        message: action.message
+        message: action.message,
+        loading: false
       }
     default:
       return state
   }
-  return state
 }

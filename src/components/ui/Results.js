@@ -1,7 +1,9 @@
 import React from 'react'
 import Gif from './Gif'
 import {Button, Container, TextField} from '@material-ui/core'
-import {apiQuery} from '../api/ApiRequest'
+import { apiQuery } from '../api/ApiRequest'
+import { requestApiData, recieveApiData } from '../redux/actions'
+import { useSelector, useDispatch } from 'react-redux'  
 import { makeStyles } from '@material-ui/core'
 import ReactLoading from 'react-loading';
 
@@ -32,27 +34,23 @@ const useStyles = makeStyles({
 
 export default function Results() {
   const [text, setText] = React.useState("")
-  const [search, setSearch] = React.useState('cats')
-  const [loading, setLoading] = React.useState(false)
-  const [results, setResults] = React.useState([])
+  const results = useSelector(state => state.results)
+  const loading = useSelector(state => state.loading)
+  const dispatch = useDispatch()
   const classes = useStyles()
 
-  React.useEffect(() => {
-    setLoading(true)
-    apiQuery(search, setResults, setLoading)
-    console.log(results)
-  },[setSearch])
 
-  const handleSubmit = () => {
-    setSearch(text)
-    setLoading(false)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const results = await apiQuery(text)
+    dispatch(recieveApiData(results))
   }
 
   return (
     <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
-        <Button disableElevation variant="contained" color="secondary" onClick={() => handleSubmit()}>🔍</Button>
+        <Button disableElevation variant="contained" color="secondary" onClick={(e) => handleSubmit(e)}>🔍</Button>
       </form>
       <div className={classes.resultsContainer}>
       {loading ? 
