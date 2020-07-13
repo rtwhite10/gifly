@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleWare from 'redux-saga'
 
-import { giphyApp } from '../src/components/redux/reducers'
+import { giphyApp, loadingState } from '../src/components/redux/reducers'
 import mySaga from '../src/components/redux/saga'
 
 const sagaMiddleware = createSagaMiddleWare()

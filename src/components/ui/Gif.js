@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     imageContainer: {
-        Width: "300px",
-        Height: "300px"
+        Width: "350px",
+        Height: "250px"
     }
 }));
 

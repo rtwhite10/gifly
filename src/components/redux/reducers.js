@@ -1,7 +1,7 @@
 
 const initialState = {
 
-  message: '',
+  error: '',
   results: [],
   loading: null
 }
@@ -17,10 +17,36 @@ export function giphyApp(state = initialState, action) {
     case 'RESULTS_FETCH_FAILED': 
       return {
         ...state,
-        message: action.message,
+        error: action.error,
         loading: false
       }
+    case 'LOADING': 
+      return {
+        ...state,
+        loading: true
+      }
+    case 'NOT_LOADING': 
+    return {
+      ...state,
+      loading: false
+    }
+    
     default:
       return state
   }
 }
+
+// export function loadingState(state = {}, action) {
+//   switch(action.type) {
+//     case 'LOADING': 
+//       return {
+//         loading: true
+//       }
+//     case 'NOT_LOADING': 
+//       return {
+//         loading: false
+//       }
+//     default:
+//       return state
+//   }
+// }
