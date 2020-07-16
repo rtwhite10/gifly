@@ -6,7 +6,7 @@ export default function GifGallery({ results }) {
     return (
         <React.Fragment>
         {    
-          results.map(gif => (
+          results.map((gif, index) => (
             <Gif key={gif.id} result={gif} />
           ))
         }

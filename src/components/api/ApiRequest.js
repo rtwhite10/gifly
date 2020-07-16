@@ -8,6 +8,5 @@ export const apiQuery = async (search) => {
     return data
   } catch (e) {
     return e
-  }
-  
+  } 
 }

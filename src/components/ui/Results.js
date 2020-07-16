@@ -7,11 +7,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core'
 import ReactLoading from 'react-loading';
 
-
-// convert to redux for state changes
-// use saga to handle async state updates
-// look up best practices and most current practices 
-
 const useStyles = makeStyles({
   formField: {
     display: 'flex',
@@ -22,11 +17,12 @@ const useStyles = makeStyles({
     width: '350px'
   },
   resultsContainer: {
-    width: '70%',
+    width: '45%',
     height: '100vh',
     margin: 'auto',
     display: 'flex',
     flexWrap: 'wrap',
+    flexDirection: 'column'
     // justifyContent: 'space-between',
   },
   loader: {
