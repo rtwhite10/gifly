@@ -2,7 +2,7 @@ import React from 'react'
 import GifGallery from './GifGallery'
 import Error from './Error'
 import {Button, Container, TextField} from '@material-ui/core'
-import { requestApiData, recieveApiData } from '../redux/actions'
+import { requestApiData, recieveApiData, requestAditionalData } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'  
 import { makeStyles } from '@material-ui/core'
 import ReactLoading from 'react-loading';
@@ -32,12 +32,24 @@ const useStyles = makeStyles({
 
 export default function Results() {
   const [text, setText] = React.useState("")
+ 
   const results = useSelector(state => state.results)
   const loading = useSelector(state => state.loading)
   const error = useSelector(state => state.error)
   const dispatch = useDispatch()
   const classes = useStyles()
 
+  // Need to troubleshoot why when the bottom of the page is reached, results become null, causing our map to display gifs fail. 
+
+  // React.useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // },[])
+
+  // const handleScroll = () => {
+  //   if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+  //   dispatch(requestAditionalData(text))
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()

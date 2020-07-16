@@ -1,5 +1,7 @@
 const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED'
 const RESULTS_FETCH_SUCCEEDED = 'RESULTS_FETCH_SUCCEEDED'
+const REQUEST_ADDITIONAL_DATA = 'REQUEST_ADDITIONAL_DATA'
+const TOGGLE_THEME = 'TOGGLE_THEME'
 
 export function requestApiData(text) {
   return {
@@ -8,9 +10,24 @@ export function requestApiData(text) {
   }
 }
 
-export function recieveApiData(data) {
+export function requestAditionalData(data) {
   return {
-    type: RESULTS_FETCH_SUCCEEDED,
+    type: REQUEST_ADDITIONAL_DATA,
     data
   }
 }
+
+export function recieveApiData(text) {
+  return {
+    type: RESULTS_FETCH_SUCCEEDED,
+    text
+  }
+}
+
+export function toggleTheme(theme) {
+  return {
+    type: TOGGLE_THEME,
+    theme
+  }
+}
+
