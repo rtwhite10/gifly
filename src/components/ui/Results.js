@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme =>  ({
     margin: '2em'
   },
   textFeild: {
-    width: '350px'
+    maxWidth: '350px'
   },
   container: {
     display: 'flex',
