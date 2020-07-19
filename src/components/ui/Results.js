@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme =>  ({
     flexDirection: 'column',
     alignItems: 'center',
     maxWidth: '850px',
-    height: '110vh',
+    height: '240vh',
     flexWrap: 'wrap',
     flexDirection: 'column',
     // [theme.breakpoints.down("md")]: {

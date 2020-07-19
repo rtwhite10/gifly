@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, delay } from 'redux-saga/effects'
 import {apiQuery} from '../api/ApiRequest'
 
 
@@ -6,7 +6,7 @@ import {apiQuery} from '../api/ApiRequest'
 function* fetchData(action) {
    try {
       const results = yield call(apiQuery, action.text);
-      yield put({ type: 'LOADING' })
+      // yield put({ type: 'LOADING' })
       yield put({ type: 'RESULTS_FETCH_SUCCEEDED', results});
    } catch (error) {
       const Error = "oops something went wrong"
@@ -17,8 +17,9 @@ function* fetchData(action) {
 function* fetchAdditonalData(action) {
    try {
       const results = yield call(apiQuery, action.text);
-      yield put({ type: 'LOADING' })
-      yield put({ type: 'REQUEST_ADDITIONAL_DATA', results});
+      yield delay(1000)
+      // yield put({ type: 'LOADING' })
+      yield put({ type: 'REQUEST_ADDITIONAL_DATA_SUCCEEDED', results});
    } catch (error) {
       const Error = "oops something went wrong"
       yield put({ type: 'RESULTS_FETCH_FAILED', Error })

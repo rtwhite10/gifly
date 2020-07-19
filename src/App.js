@@ -29,7 +29,7 @@ function App() {
     palette: {
       type: 'dark',
       primary: {
-       main: cyan[500]
+       main: cyan[100]
       },
       secondary: {
         main: cyan[100]

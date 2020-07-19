@@ -17,8 +17,7 @@ export function giphyApp(state = initialState, action) {
     case 'REQUEST_ADDITIONAL_DATA': 
     return {
       ...state,
-      results: state.results.concat(action.results),
-      loading: false
+      loading: true
     }
     case 'RESULTS_FETCH_FAILED': 
       return {
@@ -26,6 +25,14 @@ export function giphyApp(state = initialState, action) {
         error: action.error,
         loading: false
       }
+    case 'REQUEST_ADDITIONAL_DATA_SUCCEEDED':
+      const newResultList = action.results;
+      const { results } = state;
+      return {
+        ...state,
+        results: [...results, ...newResultList],
+        isLoading: false,
+      };
     case 'LOADING': 
       return {
         ...state,

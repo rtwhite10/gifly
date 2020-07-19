@@ -6,12 +6,14 @@ import { toggleTheme } from '../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
     title: {
-      margin: '2rem'
+      margin: '2rem',
+      color: 'white'
     },
     header: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      color: theme.palette.primary
     },
     button: {
       // color: theme.palette.secondary,
