@@ -6,15 +6,16 @@ import { toggleTheme } from '../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
     title: {
-        margin: '2rem'
+      margin: '2rem'
     },
     header: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
     button: {
-        fontSize: '2rem'
+      // color: theme.palette.secondary,
+      fontSize: '2rem'
     }
 }));
 
@@ -24,20 +25,18 @@ export default function Header() {
     const classes = useStyles()
 
     const handleThemeChange = () => {
-        let theme = currentTheme === 'light' ? 'dark' : 'light'
-        dispatch(toggleTheme(theme))
+      let theme = currentTheme ? false : true
+      dispatch(toggleTheme(theme))
     }
 
     return (
-        <React.Fragment>
-            <AppBar className={classes.header} position="static">
-                <Typography variant="h3" className={classes.title}>Gifly</Typography>
-                <Typography variant="h3" className={classes.title}>
-                    <Button disableRipple onClick={()=> handleThemeChange()} className={classes.button}>
-                        {currentTheme === 'light' ? '🔦' : '💡'}
-                    </Button>
-                </Typography>
-            </AppBar>
-        </React.Fragment>
+      <AppBar className={classes.header} position="static">
+        <Typography variant="h3" className={classes.title}>Gifly</Typography>
+        <Typography variant="h3" className={classes.title}>
+          <Button disableRipple onClick={()=> handleThemeChange()} className={classes.button}>
+            {currentTheme ? '🔦' : '💡'}
+          </Button>
+        </Typography>
+      </AppBar> 
     )
 }

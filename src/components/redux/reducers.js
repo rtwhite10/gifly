@@ -1,6 +1,6 @@
 
 const initialState = {
-  theme: 'light',
+  theme: true,
   error: '',
   results: [],
   loading: null

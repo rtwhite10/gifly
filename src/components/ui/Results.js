@@ -1,17 +1,17 @@
 import React from 'react'
 import GifGallery from './GifGallery'
 import Error from './Error'
-import {Button, Container, TextField} from '@material-ui/core'
+import {Button, Container, TextField, Grid} from '@material-ui/core'
 import { requestApiData, recieveApiData, requestAditionalData } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'  
 import { makeStyles } from '@material-ui/core'
 import ReactLoading from 'react-loading';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>  ({
   formField: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '2rem'
+    margin: '2em'
   },
   textFeild: {
     width: '350px'
@@ -22,13 +22,27 @@ const useStyles = makeStyles({
     margin: 'auto',
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: 'column'
-    // justifyContent: 'space-between',
+    flexDirection: 'column',
+    [theme.breakpoints.down("xl")]: {
+      width: '45%',
+    },
+    // [theme.breakpoints.down("xl")]: {
+    //   width: '30%',
+    // },
+    // [theme.breakpoints.down("xl")]: {
+    //   width: '45%',
+    // },
+    // [theme.breakpoints.down("xl")]: {
+    //   width: '45%',
+    // },
   },
   loader: {
     margin: 'auto'
+  },
+  button: {
+    backgroundColor: theme.palette.primary.secondary
   }
-})
+}))
 
 export default function Results() {
   const [text, setText] = React.useState("")
@@ -61,11 +75,11 @@ export default function Results() {
       <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
-        <Button disableElevation variant="contained" color="secondary" onClick={(e) => handleSubmit(e)}>🔍</Button>
+        <Button disableElevation variant="contained" onClick={(e) => handleSubmit(e)}>🔍</Button>
       </form>
-      <div className={classes.resultsContainer}>
+      <Grid container className={classes.resultsContainer}>
         <Error error={error} />
-      </div>
+      </Grid>
     </React.Fragment>
     )
   }
@@ -74,14 +88,14 @@ export default function Results() {
     <React.Fragment>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
-        <Button disableElevation variant="contained" color="secondary" onClick={(e) => handleSubmit(e)}>🔍</Button>
+        <Button className={classes.button} disableElevation variant="contained" color="secondary" onClick={(e) => handleSubmit(e)}>🔍</Button>
       </form>
-      <div className={classes.resultsContainer}>
+      <Grid container className={classes.resultsContainer}>
         {loading ? 
           <ReactLoading className={classes.loader} color="#FFBA60" height={300} width={375} /> :
           <GifGallery results={results} />
         }
-      </div>
+      </Grid>
     </React.Fragment>
   )
 }
