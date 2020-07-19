@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
     imageContainer: {
         width: '200px',
-        margin: '.2rem 0',
+        margin: '.5rem',
     },
     // image: {
     //     objectFit: 'cover'

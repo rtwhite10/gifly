@@ -16,18 +16,25 @@ const useStyles = makeStyles(theme =>  ({
   textFeild: {
     width: '350px'
   },
-  resultsContainer: {
-    width: '45%',
-    height: '100vh',
-    margin: 'auto',
+  container: {
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  resultsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    maxWidth: '850px',
+    height: '110vh',
     flexWrap: 'wrap',
     flexDirection: 'column',
-    [theme.breakpoints.down("xl")]: {
-      width: '45%',
-    },
-    // [theme.breakpoints.down("xl")]: {
-    //   width: '30%',
+    // [theme.breakpoints.down("md")]: {
+    //   maxWidth: '500px',
+    // },
+    // [theme.breakpoints.down("sm")]: {
+    //   maxWidth: '425px'
     // },
     // [theme.breakpoints.down("xl")]: {
     //   width: '45%',
@@ -72,20 +79,20 @@ export default function Results() {
 
   if(error !== '') {
     return (
-      <React.Fragment>
-      <form className={classes.formField} noValidate autoComplete="off">
-        <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
-        <Button disableElevation variant="contained" onClick={(e) => handleSubmit(e)}>🔍</Button>
-      </form>
-      <Grid container className={classes.resultsContainer}>
-        <Error error={error} />
-      </Grid>
-    </React.Fragment>
+      <Grid container className={classes.container}>
+        <form className={classes.formField} noValidate autoComplete="off">
+          <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
+          <Button disableElevation variant="contained" onClick={(e) => handleSubmit(e)}>🔍</Button>
+        </form>
+        <Grid container className={classes.resultsContainer}>
+          <Error error={error} />
+        </Grid>
+    </Grid>
     )
   }
 
   return (
-    <React.Fragment>
+    <Grid container className={classes.container}>
       <form className={classes.formField} noValidate autoComplete="off">
         <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
         <Button className={classes.button} disableElevation variant="contained" color="secondary" onClick={(e) => handleSubmit(e)}>🔍</Button>
@@ -96,6 +103,6 @@ export default function Results() {
           <GifGallery results={results} />
         }
       </Grid>
-    </React.Fragment>
+    </Grid>
   )
 }
