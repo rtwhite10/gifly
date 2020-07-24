@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'white'
     },
     header: {
+      maxWidth: '%100',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',

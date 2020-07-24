@@ -14,7 +14,13 @@ const useStyles = makeStyles(theme =>  ({
     margin: '2em'
   },
   textFeild: {
-    maxWidth: '350px'
+    width: '350px',
+    [theme.breakpoints.down("md")]: {
+      width: '300px',
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: '225px'
+    },
   },
   container: {
     display: 'flex',
@@ -26,22 +32,23 @@ const useStyles = makeStyles(theme =>  ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    maxWidth: '850px',
-    height: '240vh',
+    maxWidth: '1000px',
     flexWrap: 'wrap',
     flexDirection: 'column',
-    // [theme.breakpoints.down("md")]: {
-    //   maxWidth: '500px',
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   maxWidth: '425px'
-    // },
-    // [theme.breakpoints.down("xl")]: {
-    //   width: '45%',
-    // },
-    // [theme.breakpoints.down("xl")]: {
-    //   width: '45%',
-    // },
+    [theme.breakpoints.up("lg")]: {
+      height: '220vh'
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: '1000px',
+      height: '400vh'
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: '500px',
+      height: '900vh',
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: '500px',
+    },
   },
   loader: {
     margin: 'auto'
@@ -53,12 +60,21 @@ const useStyles = makeStyles(theme =>  ({
 
 export default function Results() {
   const [text, setText] = React.useState("")
- 
+  const [windowWidth, setWindowWidth] = React.useState(null)
   const results = useSelector(state => state.results)
   const loading = useSelector(state => state.loading)
   const error = useSelector(state => state.error)
   const dispatch = useDispatch()
   const classes = useStyles()
+
+  React.useEffect(() => {
+    function handleResize() {
+      console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+    }
+    window.addEventListener('resize', handleResize)
+  })
+ 
+
 
   // Need to troubleshoot why when the bottom of the page is reached, results become null, causing our map to display gifs fail. 
 
@@ -80,6 +96,7 @@ export default function Results() {
   if(error !== '') {
     return (
       <Grid container className={classes.container}>
+        <h1>{windowWidth}</h1>
         <form className={classes.formField} noValidate autoComplete="off">
           <TextField className={classes.textFeild} id="standard-basic" label="lets find a gif" onChange={e => setText(e.target.value)} />
           <Button disableElevation variant="contained" onClick={(e) => handleSubmit(e)}>🔍</Button>

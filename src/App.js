@@ -11,19 +11,21 @@ const blue = "#0B72B9"
 const orange = "#FFBA60"
 
 function App() {
+  
   const themeMode = useSelector(state => state.theme)
 
+ 
   const lightTheme = createMuiTheme({
-        palette: {
-          type: 'light',
-          primary: {
-           main: blueGrey[500]
-          },
-          secondary: {
-            main: blueGrey[100]
-          },
-        },
-      })
+    palette: {
+      type: 'light',
+      primary: {
+        main: blueGrey[500]
+      },
+      secondary: {
+        main: blueGrey[100]
+      },
+    },
+  })
   
   const darkTheme = createMuiTheme({
     palette: {
@@ -36,12 +38,10 @@ function App() {
       },
     },
   })
-
-
   
   return (
     <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
-      <Paper elevation={0}>
+      <Paper style={{overflow: 'hidden'}} elevation={0}>
         <Header />
         <Results />
       </Paper>
