@@ -33,29 +33,18 @@ const useStyles = makeStyles(theme =>  ({
     flexDirection: 'column',
     alignItems: 'center',
     maxWidth: '1000px',
+    maxHeight: '100vh',
     flexWrap: 'wrap',
     flexDirection: 'column',
-    [theme.breakpoints.up("lg")]: {
-      height: '220vh'
+    overflowY: 'auto',
+    overflowX: 'hidden',
     },
-    [theme.breakpoints.up("md")]: {
-      maxWidth: '1000px',
-      height: '400vh'
+    loader: {
+      margin: 'auto'
     },
-    [theme.breakpoints.up("sm")]: {
-      width: '500px',
-      height: '900vh',
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: '500px',
-    },
-  },
-  loader: {
-    margin: 'auto'
-  },
-  button: {
-    backgroundColor: theme.palette.primary.secondary
-  }
+    button: {
+      backgroundColor: theme.palette.primary.secondary
+    }
 }))
 
 export default function Results() {
