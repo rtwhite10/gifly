@@ -5,7 +5,7 @@ import {apiQuery} from '../api/ApiRequest'
 
 function* fetchData(action) {
    try {
-      const results = yield call(apiQuery, action.text);
+      const results = yield call(apiQuery, action.text, action.count);
       // yield put({ type: 'LOADING' })
       yield put({ type: 'RESULTS_FETCH_SUCCEEDED', results});
    } catch (error) {

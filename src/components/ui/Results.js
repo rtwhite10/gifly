@@ -58,24 +58,10 @@ export default function Results() {
 
   React.useEffect(() => {
     function handleResize() {
-      console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+      // console.log(results)
     }
     window.addEventListener('resize', handleResize)
   })
- 
-
-
-  // Need to troubleshoot why when the bottom of the page is reached, results become null, causing our map to display gifs fail. 
-
-  // React.useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // },[])
-
-  // const handleScroll = () => {
-  //   if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-  //   dispatch(requestAditionalData(text))
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
