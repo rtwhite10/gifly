@@ -50,7 +50,7 @@ export default function GifPage() {
           {results.map((gif, index) => {
             if (index <= 4) {
               return (
-              <Link to={`/${gif.id}`}>
+              <Link to={`/${gif.id}`} activeClassName="active">
                 <Grid item className={classes.RelatedGif}>
                   <img src={gif.images.fixed_height.url} alt={gif.title}/>
                 </Grid>

@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Gif({ result, index }) {
     const classes = useStyles()
-    const { id, images, title } = result
+    const { images, title } = result
     const { fixed_width } = images
-    const {width, url} = fixed_width
+    const { url } = fixed_width
 
     return (
         <Grid item className={classes.imageContainer} >
