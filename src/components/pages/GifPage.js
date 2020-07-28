@@ -3,6 +3,7 @@ import Header from '../ui/Header'
 import { useSelector, useDispatch } from 'react-redux'  
 import { useLocation } from 'react-router-dom'
 import {Paper, Button, Container, TextField, Grid, Typography, makeStyles} from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   MainGif: {
@@ -49,12 +50,20 @@ export default function GifPage() {
           {results.map((gif, index) => {
             if (index <= 4) {
               return (
-              <Grid item className={classes.RelatedGif}>
-                <img src={gif.images.fixed_height.url} alt={gif.title}/>
-              </Grid>)
+              <Link to={`/${gif.id}`}>
+                <Grid item className={classes.RelatedGif}>
+                  <img src={gif.images.fixed_height.url} alt={gif.title}/>
+                </Grid>
+              </Link>    
+              )
             }
             return
           })}
+        </Grid>
+        <Grid item>
+          <Link to="/">
+            <Typography component="body2">Back to search</Typography>
+          </Link>
         </Grid>
       </Grid>
     </Paper>
